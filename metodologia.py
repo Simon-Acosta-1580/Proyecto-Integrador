@@ -1,4 +1,4 @@
-# metodologia.py
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import select
 from db import get_session
