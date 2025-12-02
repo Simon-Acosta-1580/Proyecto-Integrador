@@ -1,8 +1,6 @@
-# beneficio.py
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter,HTTPException, status
 from sqlmodel import select
-from db import get_session
-from sqlmodel import Session
+from db import SessionDep
 from models import Beneficio, BeneficioBase
 
 router = APIRouter(prefix="/beneficios", tags=["beneficios"])
