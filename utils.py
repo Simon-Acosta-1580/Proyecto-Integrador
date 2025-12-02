@@ -18,10 +18,6 @@ def restore(instance, session):
     return instance
 
 def generar_pdf_reporte_analisis(analisis_list):
-    """
-    analisis_list: lista de dicts/objetos con keys principales
-    Genera un PDF y retorna la ruta del archivo.
-    """
     tmp_dir = tempfile.gettempdir()
     file_path = os.path.join(tmp_dir, "reporte_analisis.pdf")
     doc = SimpleDocTemplate(file_path, pagesize=letter)
@@ -32,12 +28,10 @@ def generar_pdf_reporte_analisis(analisis_list):
     elements.append(title)
     elements.append(Spacer(1, 12))
 
-    # Table header
     data = [["ID", "Nombre", "Impacto total", "Alcance medios", "Participación redes", "Beneficios (categoría - ingreso)"]]
 
     for a in analisis_list:
         beneficios_str = ""
-        # a['beneficios'] expected list of dicts {'categoria':..., 'ingreso':...}
         if a.get("beneficios"):
             beneficios_str = "; ".join(f"{b['categoria']} ${b['ingreso']}" for b in a["beneficios"])
         data.append([
