@@ -15,7 +15,7 @@ async def lifespan(app: FastAPI):
     await create_tables(app)
     yield
 
-app = FastAPI(lifespan=create_tables, title="Proyecto Integrador")
+app = FastAPI(lifespan=lifespan, title="Proyecto Integrador")
 
 app.mount("/templates", StaticFiles(directory="Templates"), name="Templates")
 app.mount("/img", StaticFiles(directory="upload"), name="img")

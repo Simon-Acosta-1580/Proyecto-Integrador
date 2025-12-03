@@ -1,10 +1,10 @@
+from fastapi import APIRouter, Request, Depends, Form, UploadFile, File
 from fastapi.responses import HTMLResponse, RedirectResponse
-from db import SessionDep
-from fastapi import APIRouter, HTTPException, Request, Form, File, UploadFile
-from models import User, UserCreate
-from sqlmodel import select
-from fastapi.templating import Jinja2Templates
-from typing import Optional
+from sqlmodel import Session, select
+from starlette.status import HTTP_303_SEE_OTHER
+from db import get_session
+from models import User
+from supabase.supabase_upload import upload_to_bucket
 
 router = APIRouter()
 
