@@ -1,18 +1,25 @@
-from fastapi import Depends, FastAPI
+import os
 from sqlmodel import SQLModel, create_engine, Session
-from typing import Annotated, Generator, Any
+from typing import Generator
 
-db_name = "proyecto.sqlite3"
-db_url = f"sqlite:///{db_name}"
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
-engine = create_engine(db_url)
+if not DATABASE_URL:
+    DATABASE_URL = "sqlite:///proyecto.db"
+    engine = create_engine(
+        DATABASE_URL,
+        echo=False,
+        connect_args={"check_same_thread": False}
+    )
+else:
+    if DATABASE_URL.startswith("postgres://"):
+        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
 
-def create_tables(app:FastAPI):
+engine = create_engine(DATABASE_URL, echo=False)
+
+def create_tables():
     SQLModel.metadata.create_all(engine)
-    yield
 
-def get_session() -> Generator[Session, Any, None]:
+def get_session() -> Generator[Session, None, None]:
     with Session(engine) as session:
         yield session
-
-SessionDep = Annotated[Session, Depends(get_session)]
