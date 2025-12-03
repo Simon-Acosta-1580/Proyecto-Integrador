@@ -17,14 +17,14 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=create_tables, title="Proyecto Integrador")
 
-app.mount("/templates", StaticFiles(directory="templates"), name="templates")
+app.mount("/templates", StaticFiles(directory="Templates"), name="Templates")
 app.mount("/img", StaticFiles(directory="upload"), name="img")
 app.include_router(user.router, prefix="/users", tags=["Usuarios"])
 app.include_router(metodologia.router, prefix="/metodologia", tags=["Metodología"])
 app.include_router(analisis.router, prefix="/analisis", tags=["Análisis"])
 app.include_router(beneficio.router, prefix="/beneficios", tags=["Beneficios"])
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="Templates")
 
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
