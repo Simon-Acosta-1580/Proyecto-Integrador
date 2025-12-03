@@ -8,10 +8,12 @@ from supabase.supabase_upload import upload_to_bucket
 
 router = APIRouter()
 
-templates = Jinja2Templates(directory="Templates")
 
 @router.get("/new", response_class=HTMLResponse)
-async def show_create(request: Request):
-    return templates.TemplateResponse("new_user.html", {"request": request})
+def formulario_nuevo_user(request: Request):
+    return request.app.state.templates.TemplateResponse(
+        "new_user.html",
+        {"request": request}
+    )
 
 

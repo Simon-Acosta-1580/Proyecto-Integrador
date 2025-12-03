@@ -54,5 +54,5 @@ class MetodologiaCreate(MetodologiaBase):
 class AnalisisCreate(AnalisisBase):
     metodologia_id: int = Field(foreign_key="metodologia.id")
 
-class beneficioCreate(BeneficioBase):
+class BeneficioCreate(BeneficioBase):
     analisis_id: int = Field(foreign_key="analisis.id")
