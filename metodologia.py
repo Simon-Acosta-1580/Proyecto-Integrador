@@ -5,5 +5,5 @@ from db import create_tables
 from sqlmodel import Session
 from models import Metodologia, MetodologiaBase
 
-router = APIRouter(prefix="/metodologias", tags=["metodologias"])
+router = APIRouter()
 

@@ -3,5 +3,5 @@ from sqlmodel import select
 from db import create_tables
 from models import Beneficio, BeneficioBase
 
-router = APIRouter(prefix="/beneficios", tags=["beneficios"])
+router = APIRouter()
 
