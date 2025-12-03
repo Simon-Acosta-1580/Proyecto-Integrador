@@ -1,6 +1,6 @@
 import os
 import uuid
-from Supabase import create_client
+from supabase import create_client
 from fastapi import UploadFile
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
