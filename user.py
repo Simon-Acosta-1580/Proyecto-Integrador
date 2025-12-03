@@ -4,7 +4,7 @@ from sqlmodel import Session, select
 from starlette.status import HTTP_303_SEE_OTHER
 from db import get_session
 from models import User
-from supabase.supabase_upload import upload_to_bucket
+from Supabase.supabase_upload import upload_to_bucket
 
 router = APIRouter()
 

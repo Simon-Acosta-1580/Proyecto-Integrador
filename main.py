@@ -8,7 +8,7 @@ from user import router as user_router
 from metodologia import router as metodologia_router
 from analisis import router as analisis_router
 from beneficio import router as beneficio_router
-from supabase.supabase_upload import upload_to_bucket
+from Supabase.supabase_upload import upload_to_bucket
 from supabase import create_client
 
 
