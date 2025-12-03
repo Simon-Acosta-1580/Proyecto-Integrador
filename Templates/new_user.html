@@ -1,0 +1,28 @@
+{% include 'header.html' %}
+<h1>Registrar nuevo usuario</h1>
+
+<form method="post" action="/users/" enctype="multipart/form-data">
+
+    <h3>Nombre</h3>
+    <input type="text" name="name">
+
+    <h3>Email</h3>
+    <input type="email" name="email">
+
+    <h3>Rol</h3>
+    <input type="radio" name="role" checked> Investigador
+    <input type="radio" name="role"> Vendedor
+
+    <h3>Estado</h3>
+    <input type="radio" name="status" value="true" checked> Alive
+    <input type="radio" name="status" value="false">Not Alive
+
+    <h3>Imagen</h3>
+    <input type="file" name="img" accept="image/*">
+    <h3></h3>
+    <input type="submit" value="Registrar usuario">
+
+
+</form>
+
+{% include 'footer.html' %}
