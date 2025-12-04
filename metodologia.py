@@ -21,7 +21,7 @@ def listar_metodologias(request: Request, session: Session = Depends(get_session
         {"request": request, "metodologias": metodologias}
     )
 
-@router.get("/metodologias/new", response_class=HTMLResponse)
+@router.get("/new", response_class=HTMLResponse)
 def nueva_metodologia_form(request: Request, session: Session = Depends(get_session)):
     users = session.exec(
         select(User).where(User.status == 'Alive')
@@ -33,7 +33,7 @@ def nueva_metodologia_form(request: Request, session: Session = Depends(get_sess
     )
 
 
-@router.post("/metodologias/new")
+@router.post("/new")
 def crear_metodologia(
         titulo: str = Form(...),
         descripcion: str = Form(None),

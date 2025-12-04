@@ -26,7 +26,7 @@ def crear_analisis_form(request: Request, session: Session = Depends(get_session
     metodologias = session.exec(select(Metodologia).where(Metodologia.status == True)).all()
 
     return request.app.state.templates.TemplateResponse(
-        "analisis_new.html",
+        "new?analisis.html",
         {"request": request, "metodologias": metodologias}
     )
 
