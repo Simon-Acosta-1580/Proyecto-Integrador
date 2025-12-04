@@ -1,0 +1,69 @@
+{% include 'header.html' %}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a href="/analisis" class="btn btn-outline-secondary">← Volver al Listado</a>
+        <div>
+            <a href="/analisis/editar/{{ analisis.id }}" class="btn btn-warning me-2">Editar</a>
+            <a href="/analisis/eliminar/{{ analisis.id }}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres desactivar este análisis?');">Desactivar</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h1 class="display-5 fw-bold">{{ analisis.nombre }}</h1>
+            <p class="text-muted">ID: {{ analisis.id }}</p>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-4 border-primary">
+                <div class="card-header bg-primary text-white fs-5">
+                    Métricas del Análisis
+                </div>
+                <div class="card-body">
+                    <p>
+                        <strong>Alcance Medios:</strong>
+                        <span class="fs-4 text-primary">{{ analisis.alcance_medios }}</span>
+                    </p>
+                    <p>
+                        <strong>Participación Redes:</strong>
+                        <span class="fs-4 text-primary">{{ analisis.participacion_redes }}</span>
+                    </p>
+                    <hr>
+                    <p>
+                        <strong>Estado:</strong>
+                        {% if analisis.status %}
+                            <span class="badge bg-success py-2 px-3">Activo</span>
+                        {% else %}
+                            <span class="badge bg-danger py-2 px-3">Inactivo</span>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card shadow-sm mb-4 border-info">
+                <div class="card-header bg-info text-white fs-5">
+                    Metodología Asociada
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <strong>ID Metodología:</strong> {{ analisis.metodologia_id | default('N/A') }}
+                    </li>
+                    <li class="list-group-item">
+
+                        <strong>Título:</strong>
+                        {% if analisis.metodologia %}
+                            <a href="/metodologia/{{ analisis.metodologia.id }}" class="text-info fw-bold">{{ analisis.metodologia.titulo }}</a>
+                        {% else %}
+                            Metodología no encontrada (ID: {{ analisis.metodologia_id }})
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}

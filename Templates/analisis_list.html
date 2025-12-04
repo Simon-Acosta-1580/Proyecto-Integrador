@@ -1,0 +1,54 @@
+{% include 'header.html' %}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-6">Análisis Activos</h1>
+        <div>
+            <a href="/analisis/new" class="btn btn-primary me-2">Crear Nuevo Análisis</a>
+            <a href="/analisis/eliminados" class="btn btn-outline-danger">Ver Eliminados</a>
+        </div>
+    </div>
+
+    {% if analisis_list %}
+        <div class="table-responsive">
+            <table class="table table-hover shadow-sm rounded overflow-hidden">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Metodología ID</th>
+                        <th scope="col">Alcance Medios</th>
+                        <th scope="col">Participación Redes</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for analisis in analisis_list %}
+                        <tr class="align-middle">
+                            <th scope="row">{{ analisis.id }}</th>
+                            <td>
+                                <a href="/analisis/{{ analisis.id }}" class="text-primary fw-bold text-decoration-none">
+                                    {{ analisis.nombre }}
+                                </a>
+                            </td>
+                            <td>{{ analisis.metodologia_id }}</td>
+                            <td>{{ analisis.alcance_medios }}</td>
+                            <td>{{ analisis.participacion_redes }}</td>
+                            <td>
+                                <a href="/analisis/editar/{{ analisis.id }}" class="btn btn-sm btn-warning me-1">Editar</a>
+                                <a href="/analisis/eliminar/{{ analisis.id }}" class="btn btn-sm btn-danger" onclick="return confirm('¿Desactivar este análisis?');">Desactivar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center" role="alert">
+            No hay análisis activos registrados. <a href="/analisis/new" class="alert-link">¡Crea uno ahora!</a>
+        </div>
+    {% endif %}
+
+</div>
+
+{% include 'footer.html' %}

@@ -1,0 +1,47 @@
+{% include 'header.html' %}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-6">Análisis Desactivados</h1>
+        <a href="/analisis" class="btn btn-info">← Volver al Listado Activo</a>
+    </div>
+
+    {% if analisis_list %}
+        <div class="table-responsive">
+            <table class="table table-hover shadow-sm rounded overflow-hidden">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Metodología ID</th>
+                        <th scope="col">Alcance Medios</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for analisis in analisis_list %}
+                        <tr class="align-middle">
+                            <th scope="row">{{ analisis.id }}</th>
+                            <td>{{ analisis.nombre }}</td>
+                            <td>{{ analisis.metodologia_id }}</td>
+                            <td>{{ analisis.alcance_medios }}</td>
+                            <td>
+                                <!-- Botón de Restauración -->
+                                <a href="/analisis/restaurar/{{ analisis.id }}" class="btn btn-success btn-sm">
+                                    Restaurar
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-success text-center" role="alert">
+            ¡No hay análisis actualmente desactivados!
+        </div>
+    {% endif %}
+
+</div>
+
+{% include 'footer.html' %}
