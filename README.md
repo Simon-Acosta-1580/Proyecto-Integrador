@@ -7,36 +7,32 @@
 </head>
 <body>
 
-    <h1>Proyecto Impacto Mundial — Sistema de Gestión de Analíticas (SGA)</h1>
+<h1>Proyecto Impacto Mundial — Sistema de Gestión de Analíticas (SGA)</h1>
 
-    <h2>Descripción General</h2>
+<h2>Descripción General</h2>
     <p>Este proyecto implementa un Sistema de Gestión de Analíticas (SGA) diseñado para centralizar y estandarizar la creación y seguimiento de metodologías de análisis de datos. Su propósito es gestionar usuarios, definir metodologías de investigación y registrar análisis específicos (como impacto en medios o participación en redes).</p>
     <p>El proyecto se desarrolla utilizando una arquitectura basada en el <i>Model-View-Controller</i> (MVC) ligero, con Python en el backend y Jinja2 para la capa de presentación.</p>
 
-    <hr>
+<hr>
 
-    <h2>Tecnologías Utilizadas</h2>
-
+ <h2>Tecnologías Utilizadas</h2>
     <h3>Backend y Estructura</h3>
     <ul>
         <li><strong>Python 3.11+</strong></li>
         <li><strong>FastAPI / Starlette</strong> — Framework principal para la lógica de negocio y enrutamiento.</li>
         <li><strong>Jinja2</strong> — Motor de plantillas para renderizar el HTML dinámico (la 'Vista').</li>
     </ul>
-
     <h3>Frontend</h3>
     <ul>
         <li><strong>HTML5, CSS3, JavaScript</strong></li>
         <li><strong>Bootstrap 5.3</strong> — Framework CSS para el diseño responsivo y la interfaz de usuario.</li>
         <li><strong>Jinja2 Templating</strong> — Utilizado para la herencia de plantillas (<code>{% extends 'header.html' %}</code>) que garantiza una estructura HTML válida y consistente.</li>
     </ul>
-
     <hr>
-
-    <h2>Estructura del Proyecto</h2>
+      <h2>Estructura del Proyecto</h2>
     <p>La aplicación sigue una estructura modular donde el código de las rutas y el manejo de plantillas están separados por módulos temáticos.</p>
 
-    <pre style="background-color: #eee; padding: 10px; border: 1px solid #ccc; overflow-x: auto;">
+ <pre style="background-color: #eee; padding: 10px; border: 1px solid #ccc; overflow-x: auto;">
 Proyecto-Integrador/
 ├── main.py (Configuración de FastAPI y routers principales)
 ├── db/ (Manejo de la conexión a la base de datos)
@@ -52,9 +48,7 @@ Proyecto-Integrador/
     └── ... otras vistas (ej. analisis_new.html, users_list.html)
 </pre>
 
-    <hr>
-
-    <!-- Configuración del Entorno -->
+<hr>
     <h2>Configuración del Entorno</h2>
     <p>Sigue estos pasos para poner en marcha el proyecto en tu entorno local.</p>
     <ol>
@@ -75,13 +69,9 @@ Proyecto-Integrador/
             <pre style="background-color: #333; color: white; padding: 10px; overflow-x: auto;"><code>uvicorn main:app --reload</code></pre>
         </li>
     </ol>
-
     <p>Aplicación disponible en: <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a></p>
-
     <hr>
-
     <h2>Endpoints Principales</h2>
-
     <h3>Análisis (Analytics)</h3>
     <table border="1" style="border-collapse: collapse; width: 100%;">
         <thead>
@@ -95,7 +85,6 @@ Proyecto-Integrador/
             <tr><td><code>PATCH</code></td><td><code>/analisis/{id}/desactivar</code></td><td>Desactiva un análisis específico.</td></tr>
         </tbody>
     </table>
-
     <h3>Metodologías (Methodologies)</h3>
     <table border="1" style="border-collapse: collapse; width: 100%;">
         <thead>
@@ -107,7 +96,6 @@ Proyecto-Integrador/
             <tr><td><code>PATCH</code></td><td><code>/metodologia/{id}/desactivar</code></td><td>Desactiva una metodología.</td></tr>
         </tbody>
     </table>
-
     <h3>Usuarios (Users)</h3>
     <table border="1" style="border-collapse: collapse; width: 100%;">
         <thead>
@@ -119,9 +107,7 @@ Proyecto-Integrador/
             <tr><td><code>PATCH</code></td><td><code>/users/{id}/desactivar</code></td><td>Desactiva una cuenta de usuario.</td></tr>
         </tbody>
     </table>
-
     <hr>
-
     <h2>Convención de Vistas (Jinja2)</h2>
     <p>Todas las vistas heredan la estructura base del proyecto para mantener la consistencia del layout, la navegación y los scripts:</p>
     <pre style="background-color: #eee; padding: 10px; border: 1px solid #ccc; overflow-x: auto;"><code>{% extends 'header.html' %}
