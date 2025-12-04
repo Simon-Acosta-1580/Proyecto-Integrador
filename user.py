@@ -27,7 +27,7 @@ def formulario_nuevo_user(request: Request):
 async def crear_user(
     name: str = Form(...),
     email: str = Form(...),
-    role: str = Form(None),
+    role: str = Form(...),
     status: str = Form(None),
     img: UploadFile = File(None),
     session: Session = Depends(get_session)
