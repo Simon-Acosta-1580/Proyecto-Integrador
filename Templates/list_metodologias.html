@@ -1,0 +1,58 @@
+{% include 'header.html' %}
+
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Listado de Metodologías</h1>
+
+    <div class="d-flex justify-content-end mb-3">
+        <a href="/metodologias/new" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Crear Nueva Metodología
+        </a>
+    </div>
+
+    {% if metodologias %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">ID Usuario</th>
+                        <th scope="col">Creador</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for metodologia in metodologias %}
+                    <tr>
+                        <th scope="row">{{ metodologia.id }}</th>
+                        <td>{{ metodologia.titulo }}</td>
+                        <td>{{ metodologia.descripcion | default('Sin descripción') }}</td>
+                        <td>
+                            {% if metodologia.status %}
+                                <span class="badge bg-success">Activo</span>
+                            {% else %}
+                                <span class="badge bg-warning text-dark">Inactivo</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ metodologia.user_id | default('N/A') }}</td>
+                        <td>
+                            {% if metodologia.usuario %}
+                                {{ metodologia.usuario.name }}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center" role="alert">
+            No hay metodologías registradas.
+        </div>
+    {% endif %}
+</div>
+
+{% include 'footer.html' %}

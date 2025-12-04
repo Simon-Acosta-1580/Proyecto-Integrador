@@ -43,7 +43,7 @@ class Analisis(AnalisisBase, table=True):
 
 class Beneficio(BeneficioBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    analisis: Analisis = Relationship(back_populates="beneficio")
+    analisis: Analisis = Relationship(back_populates="beneficios")
 
 class UserCreate(UserBase):
     pass

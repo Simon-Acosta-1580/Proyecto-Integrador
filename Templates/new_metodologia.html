@@ -1,0 +1,55 @@
+{% include 'header.html' %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <h1 class="mb-4 text-center">✨ Crear Nueva Metodología</h1>
+            <form action="/metodologias/new" method="post">
+
+                <div class="mb-3">
+                    <label class="form-label" for="titulo">Título de la Metodología</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        name="titulo"
+                        id="titulo"
+                        required
+                        placeholder="Ej: Análisis de Riesgos Financieros"
+                    >
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="descripcion">Descripción (Opcional)</label>
+                    <textarea
+                        class="form-control"
+                        name="descripcion"
+                        id="descripcion"
+                        rows="3"
+                        placeholder="Breve resumen del objetivo y el alcance de esta metodología."
+                    ></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="user_id">Usuario Creador</label>
+                    <select
+                        class="form-select"
+                        name="user_id"
+                        id="user_id"
+                        required
+                    >
+                        <option value="" disabled selected>Selecciona un Usuario</option>
+                        {% for user in users %}
+                            <option value="{{ user.id }}">{{ user.nombre }} (ID: {{ user.id }})</option>
+                        {% endfor %}
+                    </select>
+                    <small class="form-text text-muted">Debes asignar esta metodología a un usuario existente.</small>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100 mt-4">Guardar Metodología</button>
+                <a href="/metodologias" class="btn btn-secondary w-100 mt-2">Cancelar y Volver al Listado</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}
