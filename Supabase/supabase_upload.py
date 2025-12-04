@@ -9,7 +9,7 @@ SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 async def upload_to_bucket(file: UploadFile, folder: str):
-    bucket = "Taller-mult"
+    bucket = "Proyecto-mundial"
 
     content = await file.read()
 

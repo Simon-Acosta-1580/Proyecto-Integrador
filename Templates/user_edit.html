@@ -1,0 +1,83 @@
+{% include 'header.html' %}
+
+<h1 class="mb-4 text-center">Editar Usuario: {{ user.nombre }}</h1>
+<p class="text-center text-muted">ID: {{ user.id }}</p>
+
+<form action="/editar/{{ user.id }}" method="post" enctype="multipart/form-data">
+
+    <input type="hidden" name="id" value="{{ user.id }}">
+
+    <div class="mb-3">
+        <label class="form-label" for="name">Nombre</label>
+        <input
+                type="text"
+                class="form-control"
+                name="name"
+                id="name"
+                value="{{ user.nombre | default('') }}"
+                        required
+        >
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" for="email">Correo</label>
+        <input
+                type="email"
+                class="form-control"
+                name="email"
+                id="email"
+                value="{{ user.email | default('') }}"
+                required
+        >
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Rol Actual: <strong>{{ user.rol }}</strong></label><br>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="role" id="roleInvestigador" value="Investigador"
+                   {% if user.rol = 'Investigador' %} checked {% endif %} required>
+            <label class="form-check-label" for="roleInvestigador">Investigador</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="role" id="roleVendedor" value="Vendedor"
+                   {% if user.rol = 'Vendedor' %}checked{% endif %} required>
+            <label class="form-check-label" for="roleVendedor">Vendedor</label>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Estado Actual: <strong>{{ user.status }}</strong></label><br>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="status" id="statusAlive" value="Alive"
+                   {% if user.status = 'Alive' %}checked{% endif %} required>
+            <label class="form-check-label" for="statusAlive">Alive</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="status" id="statusNorAlive" value="Nor Alive"
+                   {% if user.status = 'Nor Alive' %}checked{% endif %} required>
+            <label class="form-check-label" for="statusNorAlive">Nor Alive</label>
+        </div>
+    </div>
+
+    <div class="mb-4 p-3 border rounded">
+        <label class="form-label d-block mb-2">User Identificación (Actual)</label>
+        {% if user.image_url %}
+        <img src="{{ user.image_url }}" alt="Imagen de {{ user.nombre }}" class="img-thumbnail mb-2" style="max-width: 150px; max-height: 150px;">
+        <small class="d-block text-muted mb-3">URL: {{ user.image_url | truncate(50) }}</small>
+        {% else %}
+        <p class="text-warning">No hay imagen cargada.</p>
+        {% endif %}
+
+        <label class="form-label" for="img">Subir Nueva Imagen (Opcional)</label>
+        <input type="file" class="form-control" name="img" id="img" accept="image/*">
+    </div>
+
+    <button type="submit" class="btn btn-success w-100 mt-3">Guardar Cambios</button>
+    <a href="/users" class="btn btn-secondary w-100 mt-2">Cancelar y Volver</a>
+</form>
+
+{% include 'footer.html' %}
