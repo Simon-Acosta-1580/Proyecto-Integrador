@@ -1,27 +1,28 @@
-{% if show_link|default(True) %}
-<a href="/users/{{ user.id }}">
-{% endif %}
-{% if user.img %}
-<img src="{{ user.img }}" alt="{{ user.name }}"  class="card-img-top">
-{% endif %}
-<div class="card-body">
-    <h5 class="card-title">User of the app</h5>
-    <p class="card-text">{{ user.name }}</p>
-    <p class="card-text">{{ user.email }}</p>
-  </div>
-
-{% if user.role %}
-<h4>Investigador</h4>
-{% else %}
-<h4>Vendedor</h4>
-{% endif %}
-
-{% if user.status %}
-<h4>Alive</h4>
-{% else %}
-<h4>Not Alive</h4>
-{% endif %}
+<div class="bg-white shadow-xl rounded-xl overflow-hidden transform transition-all duration-300 hover:scale-[1.02] w-full max-w-sm mx-auto my-4 border border-gray-100">
     {% if show_link|default(True) %}
-</a>
-{% endif %}
-</div>
+    <a href="/users/{{ user.id }}">
+    {% endif %}
+    {% if user.img %}
+    <img src="{{ user.img }}" alt="{{ user.name }}"  class="card-img-top">
+    {% endif %}
+    <div class="card-body">
+        <h5 class="card-title">User of the app</h5>
+        <p class="card-text">{{ user.name }}</p>
+        <p class="card-text">{{ user.email }}</p>
+      </div>
+
+    {% if user.role %}
+    <h4>Investigador</h4>
+    {% else %}
+    <h4>Vendedor</h4>
+    {% endif %}
+
+    {% if user.status %}
+    <h4>Alive</h4>
+    {% else %}
+    <h4>Not Alive</h4>
+    {% endif %}
+        {% if show_link|default(True) %}
+    </a>
+    {% endif %}
+    </div>
