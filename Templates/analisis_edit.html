@@ -1,11 +1,12 @@
 {% include 'header.html' %}
+{% include 'navbar.html %}
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1 class="mb-4 text-center">Editar Análisis: {{ analisis.nombre }}</h1>
+            <h1 class="mb-4 text-center text-primary-custom">Editar Análisis: {{ analisis.nombre }}</h1>
 
-            <form action="/analisis/editar/{{ analisis.id }}" method="post" class="bg-light p-4 rounded shadow-lg">
+            <form action="/analisis/editar/{{ analisis.id }}" method="post" class="form-container-custom">
 
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre del Análisis:</label>
@@ -39,9 +40,9 @@
                     <label class="form-check-label" for="status">Análisis Activo</label>
                 </div>
 
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between pt-3">
                     <button type="submit" class="btn btn-success btn-lg">Guardar Cambios</button>
-                    <a href="/analisis/{{ analisis.id }}" class="btn btn-outline-secondary">Cancelar</a>
+                    <a href="/analisis/{{ analisis.id }}" class="btn btn-outline-secondary btn-lg">Cancelar</a>
                 </div>
             </form>
         </div>

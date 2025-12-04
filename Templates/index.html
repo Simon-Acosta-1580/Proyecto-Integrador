@@ -1,5 +1,114 @@
-{% include 'header.html' %}
+<!DOCTYPE html>
+{% include 'navbar.html %}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Analíticas (SGA)</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #00796B; /* Teal oscuro */
+            --primary-light: #4db6ac; 
+            --secondary-action: #004d40; /* Tono más oscuro para hover */
+            --success-color: #00796B; /* Usamos el primario para guardar/success */
+            --border-color: #00796b40;
+        }
+
+        /* Estilo del contenedor de formulario (reutilizado para la tarjeta principal) */
+        .form-container-custom {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px !important;
+            padding: 2.5rem !important;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Color de título */
+        .text-primary-custom {
+            color: var(--primary-color) !important;
+            font-weight: 700;
+        }
+
+        /* Botones de acción principal (Crear/Guardar) */
+        .btn-primary-custom, .btn-success {
+            background-color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .btn-primary-custom:hover, .btn-primary-custom:focus,
+        .btn-success:hover, .btn-success:focus {
+            background-color: var(--secondary-action) !important;
+            border-color: var(--secondary-action) !important;
+        }
+    </style>
+</head>
 <body>
-<h1>Un API para conocer el impacto del mundial FIFA</h1>
+
+    {% include 'header.html' %}
+
+    <div class="container mt-5 pt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                
+                <header class="text-center mb-5">
+                    <h1 class="display-3 text-primary-custom mb-3">
+                        Sistema de Gestión de Analíticas (SGA)
+                    </h1>
+                    <p class="lead text-muted">
+                        Plataforma centralizada para la creación, edición y supervisión de metodologías de análisis de datos.
+                    </p>
+                </header>
+                
+                <div class="card form-container-custom p-4 shadow-lg">
+                    <div class="card-body">
+                        <h2 class="card-title text-primary-custom mb-4 border-bottom pb-2">
+                            Bienvenido a la Plataforma Corporativa
+                        </h2>
+                        
+                        <p class="card-text">
+                            Este sistema ha sido diseñado para centralizar y estandarizar todos los procesos de análisis e investigación dentro de nuestra organización. Utilizando metodologías claras y estructuradas, garantizamos la consistencia y la trazabilidad de los datos.
+                        </p>
+                        
+                        <ul class="list-unstyled mt-4">
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i> 
+                                **Metodologías:** Define estructuras de trabajo reutilizables.
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-chart-line text-success me-2"></i> 
+                                **Análisis:** Registra y edita métricas clave como Alcance de Medios y Participación en Redes.
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-users text-success me-2"></i> 
+                                **Usuarios:** Gestiona perfiles de investigadores y vendedores, incluyendo roles y estado (Activo/Inactivo).
+                            </li>
+                        </ul>
+
+                        <div class="d-grid gap-2 mt-5">
+                            <a href="/analisis" class="btn btn-primary-custom btn-lg">
+                                <i class="fas fa-arrow-right me-2"></i> Ir al Dashboard de Análisis
+                            </a>
+                            <a href="/metodologias" class="btn btn-outline-secondary btn-lg">
+                                Ver Metodologías
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="text-center mt-5 text-muted small">
+                    <p>&copy; 2024 - Sistema de Gestión Corporativa | Desarrollado con Jinja2 y Bootstrap</p>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    {% include 'footer.html' %}
 </body>
-{% include 'footer.html' %}
+</html>

@@ -1,10 +1,12 @@
 {% include 'header.html' %}
+{% include 'navbar.html %}
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
-            <h1 class="mb-4 text-center">✨ Crear Nueva Metodología</h1>
-            <form action="/metodologias/new" method="post">
+            <h1 class="mb-4 text-center text-primary-custom">✨ Crear Nueva Metodología</h1>
+
+            <form action="/metodologias/new" method="post" class="form-container-custom">
 
                 <div class="mb-3">
                     <label class="form-label" for="titulo">Título de la Metodología</label>
@@ -39,14 +41,16 @@
                     >
                         <option value="" disabled selected>Selecciona un Usuario</option>
                         {% for user in users %}
-                            <option value="{{ user.id }}">{{ user.nombre }} (ID: {{ user.id }})</option>
+                            <option value="{{ user.id }}">{{ user.name }} (ID: {{ user.id }})</option>
                         {% endfor %}
                     </select>
                     <small class="form-text text-muted">Debes asignar esta metodología a un usuario existente.</small>
                 </div>
 
-                <button type="submit" class="btn btn-success w-100 mt-4">Guardar Metodología</button>
-                <a href="/metodologias" class="btn btn-secondary w-100 mt-2">Cancelar y Volver al Listado</a>
+                <div class="d-grid gap-2 pt-3">
+                    <button type="submit" class="btn btn-primary-custom w-100 mt-4 btn-lg">Guardar Metodología</button>
+                    <a href="/metodologias" class="btn btn-outline-secondary w-100 mt-2 btn-lg">Cancelar y Volver al Listado</a>
+                </div>
             </form>
         </div>
     </div>

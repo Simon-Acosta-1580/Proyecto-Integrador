@@ -3,4 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Impacto del Mundial FIFA</title>
+    <style>
+    :root {
+        --primary-color: #00796B;
+        --primary-light: #4db6ac;
+        --secondary-action: #004d40;
+        --success-color: #00796B;
+        --border-color: #00796b40;
+    }
+
+    .form-container-custom {
+        background-color: #ffffff;
+        border: 1px solid var(--border-color);
+        border-radius: 12px !important;
+        padding: 2.5rem !important;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .text-primary-custom {
+        color: var(--primary-color) !important;
+        font-weight: 700;
+    }
+
+    .btn-primary-custom, .btn-success {
+        background-color: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+        transition: background-color 0.2s, border-color 0.2s;
+    }
+    .btn-primary-custom:hover, .btn-primary-custom:focus,
+    .btn-success:hover, .btn-success:focus {
+        background-color: var(--secondary-action) !important;
+        border-color: var(--secondary-action) !important;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: var(--primary-light);
+        box-shadow: 0 0 0 0.25rem rgba(0, 121, 107, 0.25);
+    }
+</style>
+
 </head>

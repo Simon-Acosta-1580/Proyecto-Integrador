@@ -20,7 +20,6 @@ class AnalisisBase(SQLModel):
     participacion_redes: Optional[float] = Field(default=0, description="Rede de la participacion")
     status: bool = Field(default=True, description="Activio o inactivo")
     metodologia_id: Optional[int] = Field(default=None, foreign_key="metodologia.id")
-
 class User(UserBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     metodologias: list["Metodologia"] = Relationship(back_populates="usuario")

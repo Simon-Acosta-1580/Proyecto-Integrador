@@ -1,11 +1,12 @@
 {% include 'header.html' %}
+{% include 'navbar.html %}
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1 class="mb-4 text-center">Editar Metodología: {{ metodologia.titulo }}</h1>
+            <h1 class="mb-4 text-center text-primary-custom">Editar Metodología: {{ metodologia.titulo }}</h1>
 
-            <form action="/metodologia/editar/{{ metodologia.id }}" method="post" class="bg-light p-4 rounded shadow-lg">
+            <form action="/metodologia/editar/{{ metodologia.id }}" method="post" class="form-container-custom">
 
                 <!-- Título -->
                 <div class="mb-3">
@@ -39,9 +40,9 @@
                 </div>
 
                 <!-- Botones de Acción -->
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between pt-3">
                     <button type="submit" class="btn btn-success btn-lg">Guardar Cambios</button>
-                    <a href="/metodologia/{{ metodologia.id }}" class="btn btn-outline-secondary">Cancelar</a>
+                    <a href="/metodologia/{{ metodologia.id }}" class="btn btn-outline-secondary btn-lg">Cancelar</a>
                 </div>
             </form>
         </div>
