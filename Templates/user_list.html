@@ -1,31 +1,11 @@
-{% include 'header.html' %}
-
+{% include 'header.html'
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <a href="/users/new">Crear Usuario</a>
+    <h1>Usuarios</h1>
 
-    <div class="flex flex-col sm:flex-row justify-between items-center mb-8 space-y-4 sm:space-y-0">
-        <h1 class="text-4xl font-extrabold text-gray-900">Usuarios Activos</h1>
-        <a href="/users/new" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-xl shadow-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out transform hover:scale-[1.02]">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-            Crear Usuario
-        </a>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {% for user in users %}
-            {% include 'user_card.html' %}
-        {% endfor %}
-    </div>
-
-    {% if not users %}
-        <div class="mt-10 bg-gray-50 border-l-4 border-gray-400 p-4 rounded-lg shadow-md max-w-lg mx-auto" role="alert">
-            <div class="flex items-center justify-center">
-                <p class="text-lg font-medium text-gray-700">
-                    Aún no hay usuarios activos. ¡Crea el primero!
-                </p>
-            </div>
-        </div>
-    {% endif %}
-
+    {% for user in users %}
+        {% include 'user_card.html' %}
+    {% endfor %}
 </div>
 
 {% include 'footer.html' %}
