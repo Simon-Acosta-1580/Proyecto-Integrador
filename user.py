@@ -27,7 +27,7 @@ def formulario_nuevo_user(request: Request):
 async def crear_user(
     name: str = Form(...),
     email: str = Form(...),
-    role: bool = Form(None),
+    role: str = Form(None),
     status: str = Form(None),
     img: UploadFile = File(None),
     session: Session = Depends(get_session)
@@ -77,7 +77,7 @@ async def editar_user(
     user_id: int,
     name: str = Form(...),
     email: str = Form(...),
-    role: bool = Form(...),
+    role: str = Form(...),
     status: str = Form(True),
     img: UploadFile = File(None),
     session: Session = Depends(get_session)
