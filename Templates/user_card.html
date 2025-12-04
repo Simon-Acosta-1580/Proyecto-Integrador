@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% if show_link|default(True) %}
+<a href="/users/{{ user.id }}">
+{% endif %}
+{% if user.img %}
+<img src="{{ user.img }}" alt="{{ user.name }}"  class="card-img-top">
+{% endif %}
+<div class="card-body">
+    <h5 class="card-title">User of the app</h5>
+    <p class="card-text">{{ user.name }}</p>
+    <p class="card-text">{{ user.email }}</p>
+  </div>
 
-</body>
-</html>
+{% if user.role %}
+<h4>Investigador</h4>
+{% else %}
+<h4>Vendedor</h4>
+{% endif %}
+
+{% if user.status %}
+<h4>Alive</h4>
+{% else %}
+<h4>Not Alive</h4>
+{% endif %}
+    {% if show_link|default(True) %}
+</a>
+{% endif %}
+</div>

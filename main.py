@@ -25,9 +25,9 @@ def on_startup():
     print("Base de datos inicializada y servidor listo.")
 
 app.include_router(user_router, prefix="/users", tags=["users"])
-app.include_router(metodologia_router,prefix="/metodologia", tags=["metodologia"])
+app.include_router(metodologia_router,prefix="/metodologias", tags=["metodologias"])
 app.include_router(analisis_router, prefix="/analisis", tags=["analisis"])
-app.include_router(beneficio_router, prefix="/beneficio", tags=["beneficio"])
+app.include_router(beneficio_router, prefix="/beneficios", tags=["beneficios"])
 
 @app.get("/", response_class=HTMLResponse, tags=["Vistas HTML"])
 def root(request: Request):

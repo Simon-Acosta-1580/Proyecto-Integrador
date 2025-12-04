@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% include 'header.html' %}
 
-</body>
-</html>
+<a href="/users/">Back</a>
+{% set show_link = False %}
+{% include 'user_card.html' with context %}
+
+{% if user.metodologias %}
+<a href="/users/{{ user.id }}/metodologias">look pets({{ user.metodologias|length }})</a>
+{% else %}
+<a href="/metodologias/new?user_id={{ user.id }}">Agregar Primera metodologia</a>
+{% endif %}
+
+{% include 'footer.html' %}
