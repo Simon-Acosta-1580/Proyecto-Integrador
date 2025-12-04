@@ -1,0 +1,86 @@
+{% include 'header.html' %}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <a href="/metodologias" class="btn btn-outline-secondary">← Volver al Listado</a>
+        <div>
+            <a href="/metodologia/editar/{{ metodologia.id }}" class="btn btn-warning me-2">Editar</a>
+            <!-- Botón de Eliminación (Soft Delete) -->
+            <a href="/metodologia/eliminar/{{ metodologia.id }}" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que quieres desactivar esta metodología?');">Desactivar</a>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12 mb-4">
+            <h1 class="display-5 fw-bold">{{ metodologia.titulo }}</h1>
+            <p class="text-muted">ID: {{ metodologia.id }}</p>
+        </div>
+        
+        <div class="col-lg-8">
+            <div class="card shadow-sm mb-4 border-primary">
+                <div class="card-header bg-primary text-white fs-5">
+                    Descripción
+                </div>
+                <div class="card-body">
+                    <p class="lead">{{ metodologia.descripcion | default('Sin descripción.') }}</p>
+                    <hr>
+                    <p>
+                        <strong>Estado:</strong> 
+                        {% if metodologia.status %}
+                            <span class="badge bg-success py-2 px-3">Activa</span>
+                        {% else %}
+                            <span class="badge bg-danger py-2 px-3">Inactiva</span>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+            <div class="card shadow-sm mb-4 border-info">
+                <div class="card-header bg-info text-white fs-5">
+                    Creada por
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <strong>ID Creador:</strong> {{ metodologia.user_id | default('N/A') }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Nombre:</strong> 
+                        {% if metodologia.usuario %}
+                            <a href="/user/{{ metodologia.usuario.id }}" class="text-info fw-bold">{{ metodologia.usuario.name }}</a>
+                        {% else %}
+                            Usuario no encontrado
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card shadow-sm border-warning">
+                <div class="card-header bg-warning text-dark fs-5">
+                    Análisis Asociados ({{ metodologia.analisis | length }} en total)
+                </div>
+                <div class="card-body p-0">
+                    {% if metodologia.analisis %}
+                        <ul class="list-group list-group-flush">
+                            {% for analisis in metodologia.analisis %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <a href="/analisis/{{ analisis.id }}" class="text-decoration-none text-dark">
+                                        {{ analisis.nombre }}
+                                    </a>
+                                    <span class="badge bg-secondary">ID: {{ analisis.id }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <div class="p-3 text-center text-muted">
+                            No hay análisis asociados.
+                            <br><small>Puedes crear uno para esta metodología.</small>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% include 'footer.html' %}

@@ -7,7 +7,6 @@ from db import create_tables, get_session
 from user import router as user_router
 from metodologia import router as metodologia_router
 from analisis import router as analisis_router
-from beneficio import router as beneficio_router
 from Supabase.supabase_upload import upload_to_bucket
 from supabase import create_client
 
@@ -27,7 +26,6 @@ def on_startup():
 app.include_router(user_router, prefix="/users", tags=["users"])
 app.include_router(metodologia_router,prefix="/metodologias", tags=["metodologias"])
 app.include_router(analisis_router, prefix="/analisis", tags=["analisis"])
-app.include_router(beneficio_router, prefix="/beneficios", tags=["beneficios"])
 
 @app.get("/", response_class=HTMLResponse, tags=["Vistas HTML"])
 def root(request: Request):

@@ -1,0 +1,51 @@
+{% include 'header.html' %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h1 class="mb-4 text-center">Editar Metodología: {{ metodologia.titulo }}</h1>
+
+            <form action="/metodologia/editar/{{ metodologia.id }}" method="post" class="bg-light p-4 rounded shadow-lg">
+
+                <!-- Título -->
+                <div class="mb-3">
+                    <label for="titulo" class="form-label">Título:</label>
+                    <input type="text" class="form-control" id="titulo" name="titulo" value="{{ metodologia.titulo }}" required>
+                </div>
+
+                <!-- Descripción -->
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción:</label>
+                    <textarea class="form-control" id="descripcion" name="descripcion" rows="4">{{ metodologia.descripcion | default('') }}</textarea>
+                </div>
+
+                <!-- ID de Usuario Creador (Se usa un select para listar todos los usuarios disponibles) -->
+                <div class="mb-3">
+                    <label for="user_id" class="form-label">Usuario Creador:</label>
+                    <select class="form-select" id="user_id" name="user_id" required>
+                        {% for user in users %}
+                            <option value="{{ user.id }}" {% if user.id == metodologia.user_id %}selected{% endif %}>
+                                {{ user.name }} (ID: {{ user.id }})
+                            </option>
+                        {% endfor %}
+                    </select>
+                    <small class="form-text text-muted">Asegúrate de seleccionar el ID del usuario correcto.</small>
+                </div>
+
+                <!-- Status (Checkbox) -->
+                <div class="mb-4 form-check">
+                    <input type="checkbox" class="form-check-input" id="status" name="status" value="on" {% if metodologia.status %}checked{% endif %}>
+                    <label class="form-check-label" for="status">Metodología Activa</label>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success btn-lg">Guardar Cambios</button>
+                    <a href="/metodologia/{{ metodologia.id }}" class="btn btn-outline-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}

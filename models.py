@@ -21,12 +21,6 @@ class AnalisisBase(SQLModel):
     status: bool = Field(default=True, description="Activio o inactivo")
     metodologia_id: Optional[int] = Field(default=None, foreign_key="metodologia.id")
 
-class BeneficioBase(SQLModel):
-    categoria: str = Field(index=True,description="Categoria de la base de datos")
-    ingreso: float = Field(default=0, description="Ingreso de la base de datos")
-    status: bool = Field(default=True, description="Activio o inactivo")
-    analisis_id: Optional[int] = Field(default=None, foreign_key="analisis.id")
-
 class User(UserBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     metodologias: list["Metodologia"] = Relationship(back_populates="usuario")
@@ -39,11 +33,6 @@ class Metodologia(MetodologiaBase, table=True):
 class Analisis(AnalisisBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     metodologia: Metodologia = Relationship(back_populates="analisis")
-    beneficios: list["Beneficio"] = Relationship(back_populates="analisis")
-
-class Beneficio(BeneficioBase, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    analisis: Analisis = Relationship(back_populates="beneficios")
 
 class UserCreate(UserBase):
     pass
@@ -53,6 +42,3 @@ class MetodologiaCreate(MetodologiaBase):
 
 class AnalisisCreate(AnalisisBase):
     metodologia_id: int = Field(foreign_key="metodologia.id")
-
-class BeneficioCreate(BeneficioBase):
-    analisis_id: int = Field(foreign_key="analisis.id")

@@ -1,0 +1,47 @@
+{% include 'header.html' %}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-6">Metodologías Desactivadas</h1>
+        <a href="/metodologias" class="btn btn-info">← Volver al Listado Activo</a>
+    </div>
+
+    {% if metodologias %}
+        <div class="table-responsive">
+            <table class="table table-hover shadow-sm rounded overflow-hidden">
+                <thead class="bg-dark text-white">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Título</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">ID Creador</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for metodologia in metodologias %}
+                        <tr class="align-middle">
+                            <th scope="row">{{ metodologia.id }}</th>
+                            <td>{{ metodologia.titulo }}</td>
+                            <td>{{ metodologia.descripcion | truncate(100, True) | default('N/A') }}</td>
+                            <td>{{ metodologia.user_id }}</td>
+                            <td>
+                                <!-- Botón de Restauración -->
+                                <a href="/metodologia/restaurar/{{ metodologia.id }}" class="btn btn-success btn-sm">
+                                    Restaurar
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-success text-center" role="alert">
+            ¡No hay metodologías actualmente desactivadas!
+        </div>
+    {% endif %}
+
+</div>
+
+{% include 'footer.html' %}
