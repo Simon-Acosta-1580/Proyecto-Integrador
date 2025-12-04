@@ -1,35 +1,51 @@
 {% include 'header.html' %}
-<h1>Registrar nuevo usuario</h1>
 
-<form action="/users/new" method="post" enctype="multipart/form-data">
-    <div class="mb-3">
-        <label class="form-label">Nombre</label>
-        <input type="text" class="form-control" name="name" required>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1 class="mb-4 text-center">Crear Nuevo Usuario</h1>
+
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <form action="/users/new" method="post" enctype="multipart/form-data" class="bg-light p-4 rounded shadow-sm">
+
+                <!-- Nombre -->
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="role" class="form-label">Rol (Opcional):</label>
+                    <input type="text" class="form-control" id="role" name="role" placeholder="Ej: investigator">
+                </div>
+
+                <div class="mb-3">
+                    <label for="file" class="form-label">Imagen de Perfil:</label>
+                    <input type="file" class="form-control" id="file" name="file" accept="image/*" required>
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="status" name="status" value="on" checked>
+                    <label class="form-check-label" for="status">Usuario Activo</label>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-lg">Crear Usuario</button>
+                    <a href="/users" class="btn btn-outline-secondary">Cancelar y Volver</a>
+                </div>
+            </form>
+        </div>
     </div>
-
-    <div class="mb-3">
-        <label class="form-label">Correo</label>
-        <input type="email" class="form-control" name="email">
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">Rol</label>
-        <input type="radio" class="form-control" name="role" checked> Investigador
-        <input type="radio" class="form-control" name="role"> Vendedor
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">Estado</label>
-        <input type="radio" class="form-control" name="status" checked> Alive
-        <input type="radio" class="form-control" name="status" > Nor Alive
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">User identificacion</label>
-        <input type="file" class="form-control" name="img" accept="image/*">
-    </div>
-
-    <button class="btn btn-success w-100 mt-3">Guardar</button>
-</form>
+</div>
 
 {% include 'footer.html' %}

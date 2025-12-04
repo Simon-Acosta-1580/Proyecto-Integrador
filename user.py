@@ -27,8 +27,8 @@ def formulario_nuevo_user(request: Request):
 async def crear_user(
     name: str = Form(...),
     email: str = Form(...),
-    role: bool = Form(...),
-    status: str = Form(...),
+    role: bool = Form(None),
+    status: str = Form(None),
     img: UploadFile = File(None),
     session: Session = Depends(get_session)
 ):
@@ -37,11 +37,12 @@ async def crear_user(
     if img:
         img_url = await upload_to_bucket(img, "users")
 
+    status_bool = True if status == 'on' else False
     nuevo_user = User(
         name=name,
         email=email,
         role=role,
-        status=status,
+        status=status_bool,
         img=img_url,
     )
 
